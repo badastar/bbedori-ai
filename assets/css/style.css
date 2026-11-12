@@ -1821,6 +1821,7 @@ body.modal-open {
 }
 
 .slides-modal-header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1834,6 +1835,70 @@ body.modal-open {
   margin-bottom: 0;
   flex: 1;
   min-width: 0;
+}
+
+.slides-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.slides-modal-mobile-title,
+.slides-menu-toggle {
+  display: none;
+}
+
+.slides-menu-toggle {
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.slides-menu-toggle:hover {
+  border-color: var(--brand-teal);
+  color: var(--brand-teal);
+}
+
+@media (max-width: 1023px) {
+  .slides-modal-mobile-title {
+    display: block;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--brand-teal-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .slides-menu-toggle {
+    display: inline-flex;
+  }
+
+  .slides-modal-header .slides-pills {
+    display: none;
+  }
+
+  .slides-modal-header .slides-pills.is-open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    background: var(--bg-surface);
+    border-bottom: 2px solid var(--border-light);
+    box-shadow: var(--shadow-md);
+    padding: 12px 14px;
+  }
 }
 
 .slides-modal-body {

@@ -173,6 +173,9 @@
 
     var panels = Array.prototype.slice.call(deck.querySelectorAll("[data-slide-panel]"));
     var pills = Array.prototype.slice.call(deck.querySelectorAll("[data-slide-pill]"));
+    var pillsWrap = deck.querySelector(".slides-pills");
+    var menuToggle = deck.querySelector("[data-slides-menu-toggle]");
+    var currentLabelEl = deck.querySelector("[data-slide-current-label]");
     var prevBtn = deck.querySelector("[data-slide-prev]");
     var nextBtn = deck.querySelector("[data-slide-next]");
     var counterEl = deck.querySelector("[data-slide-counter]");
@@ -180,6 +183,13 @@
     if (panels.length === 0) return;
 
     var currentIndex = 0;
+
+    function setMenuOpen(isOpen) {
+      if (!pillsWrap || !menuToggle) return;
+      pillsWrap.classList.toggle("is-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "슬라이드 목차 닫기" : "슬라이드 목차 열기");
+    }
 
     function showSlide(index) {
       if (index < 0 || index >= panels.length) return;
@@ -192,6 +202,9 @@
       pills.forEach(function (pill, idx) {
         if (idx === currentIndex) {
           pill.setAttribute("aria-current", "true");
+          if (currentLabelEl) {
+            currentLabelEl.textContent = pill.textContent;
+          }
         } else {
           pill.removeAttribute("aria-current");
         }
@@ -205,9 +218,22 @@
       if (nextBtn) nextBtn.disabled = currentIndex === panels.length - 1;
     }
 
+    if (menuToggle && pillsWrap) {
+      menuToggle.addEventListener("click", function () {
+        setMenuOpen(!pillsWrap.classList.contains("is-open"));
+      });
+    }
+
     pills.forEach(function (pill, idx) {
       pill.addEventListener("click", function () {
         showSlide(idx);
+        setMenuOpen(false);
+      });
+    });
+
+    deck.querySelectorAll("[data-modal-close]").forEach(function (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        setMenuOpen(false);
       });
     });
 

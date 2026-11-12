@@ -1151,7 +1151,8 @@
   >
     <div class="modal-dialog modal-dialog--slides" data-slide-deck>
       <div class="slides-modal-header">
-        <div class="slides-pills" role="navigation" aria-label="슬라이드 선택">
+        <span class="slides-modal-mobile-title" data-slide-current-label>1. 도입</span>
+        <div id="modal-slides-pills" class="slides-pills" role="navigation" aria-label="슬라이드 선택">
           <button type="button" class="slide-pill" data-slide-pill aria-current="true">1. 도입</button>
           <button type="button" class="slide-pill" data-slide-pill>2. 자료 수집</button>
           <button type="button" class="slide-pill" data-slide-pill>3. ChatGPT 분석</button>
@@ -1161,7 +1162,18 @@
           <button type="button" class="slide-pill" data-slide-pill>7. 콘텐츠 자산화</button>
           <button type="button" class="slide-pill" data-slide-pill>8. 결말</button>
         </div>
-        <button type="button" class="modal-close" data-modal-close aria-label="슬라이드 닫기">×</button>
+        <div class="slides-modal-actions">
+          <button
+            type="button"
+            class="slides-menu-toggle"
+            data-slides-menu-toggle
+            aria-expanded="false"
+            aria-controls="modal-slides-pills"
+            aria-label="슬라이드 목차 열기"
+            title="슬라이드 목차"
+          ><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+          <button type="button" class="modal-close" data-modal-close aria-label="슬라이드 닫기">×</button>
+        </div>
       </div>
 
       <div class="slides-modal-body">
