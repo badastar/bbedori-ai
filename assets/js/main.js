@@ -366,11 +366,13 @@
     });
 
     window.addEventListener("scroll", function () {
+      document.body.classList.toggle("is-floating-nav-visible", window.scrollY >= window.innerHeight * 0.5);
       if (!ticking) {
         ticking = true;
         window.requestAnimationFrame(updateScrollState);
       }
     }, { passive: true });
+    window.addEventListener("resize", updateScrollState, { passive: true });
 
     if (window.location.hash && linkByHref[window.location.hash]) {
       setActive(window.location.hash);
