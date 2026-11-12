@@ -1434,10 +1434,10 @@ section[id],
 
 .closing-quote {
   margin: 0 auto 24px;
-  max-width: 780px;
-  font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+  max-width: 100%;
+  font-size: clamp(1.125rem, 2.1vw, 1.5rem);
   font-weight: 800;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .closing-actions {
