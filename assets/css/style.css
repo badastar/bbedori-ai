@@ -47,7 +47,7 @@
   --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.07);
 
   --header-height: 70px;
-  --container-max: 1120px;
+  --container-max: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -147,7 +147,7 @@ a:hover {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2%;
 }
 
 section[id],
@@ -167,7 +167,7 @@ section[id],
 
 .section-header {
   margin-bottom: 32px;
-  max-width: 760px;
+  max-width: 960px;
 }
 
 .section-eyebrow {
@@ -238,13 +238,14 @@ section[id],
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
   background: var(--brand-teal);
   color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .nav-toggle {
