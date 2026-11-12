@@ -439,7 +439,16 @@
         <article class="step-card">
           <div class="step-head">
             <span class="step-badge">3단계 · 5~7분</span>
-            <span class="pill">지식 축적 단계</span>
+            <div class="step-head-actions">
+              <span class="pill">지식 축적 단계</span>
+              <button
+                type="button"
+                class="pill-btn"
+                data-modal-open="nlm-limits-modal"
+                aria-haspopup="dialog"
+                aria-controls="nlm-limits-modal"
+              ><i class="fa-solid fa-table-list" aria-hidden="true"></i> 플랜별 한도 비교표</button>
+            </div>
           </div>
           <h2 class="step-title">NotebookLM에 자료 축적하기</h2>
           <p class="step-summary">
@@ -1025,6 +1034,112 @@
       </div>
     </section>
   </main>
+
+  <!-- NotebookLM 플랜별 한도 비교표 모달 -->
+  <div
+    id="nlm-limits-modal"
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="nlm-limits-title"
+    hidden
+  >
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="nlm-limits-title" class="modal-title">NotebookLM 플랜별 사용 한도 비교표</h3>
+        <button type="button" class="modal-close" data-modal-close aria-label="모달 닫기">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">항목</th>
+                <th scope="col">무료(Standard)</th>
+                <th scope="col">Plus</th>
+                <th scope="col">Pro</th>
+                <th scope="col">Ultra (20TB)</th>
+                <th scope="col">Ultra (30TB)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>노트북 수</strong></td>
+                <td>100개</td>
+                <td>200개</td>
+                <td>500개</td>
+                <td>500개</td>
+                <td>500개</td>
+              </tr>
+              <tr>
+                <td><strong>노트북당 소스</strong></td>
+                <td>50개</td>
+                <td>100개</td>
+                <td>300개</td>
+                <td>500개</td>
+                <td>600개</td>
+              </tr>
+              <tr>
+                <td><strong>하루 채팅</strong></td>
+                <td>50회</td>
+                <td>200회</td>
+                <td>500회</td>
+                <td>2,500회</td>
+                <td>5,000회</td>
+              </tr>
+              <tr>
+                <td><strong>하루 오디오 개요</strong></td>
+                <td>3개</td>
+                <td>6개</td>
+                <td>20개</td>
+                <td>100개</td>
+                <td>200개</td>
+              </tr>
+              <tr>
+                <td><strong>하루 동영상 개요</strong></td>
+                <td>3개</td>
+                <td>6개</td>
+                <td>20개</td>
+                <td>100개</td>
+                <td>200개</td>
+              </tr>
+              <tr>
+                <td><strong>하루 보고서</strong></td>
+                <td>10개</td>
+                <td>20개</td>
+                <td>100개</td>
+                <td>500개</td>
+                <td>1,000개</td>
+              </tr>
+              <tr>
+                <td><strong>딥리서치</strong></td>
+                <td>월 10회</td>
+                <td>하루 3회</td>
+                <td>하루 20회</td>
+                <td>하루 75회</td>
+                <td>하루 200회</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="modal-note">일일 한도는 24시간 뒤, 월간 한도는 30일 뒤에 초기화된다고 공식 문서에 적혀 있습니다.</p>
+      </div>
+
+      <div class="modal-footer">
+        <p class="modal-disclaimer">2026년 9월 29일 기준이며 구글이 한도를 예고없이 바꿀 수 있으니 공식 페이지를 다시 확인하세요.</p>
+        <div class="modal-footer-actions">
+          <a
+            class="btn btn--secondary btn--sm"
+            href="https://notebooklm.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >공식 페이지 열기 ↗</a>
+          <button type="button" class="btn btn--primary btn--sm" data-modal-close>닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container footer-inner">

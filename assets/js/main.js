@@ -362,6 +362,70 @@
   }
 
   /**
+   * 모달 열기/닫기 제어 (Escape, 배경 클릭, 닫기 버튼, 포커스 복귀)
+   */
+  function initModals() {
+    var openButtons = document.querySelectorAll("[data-modal-open]");
+    if (openButtons.length === 0) return;
+
+    var activeModal = null;
+    var lastTrigger = null;
+
+    function closeModal() {
+      if (!activeModal) return;
+      activeModal.hidden = true;
+      document.body.classList.remove("modal-open");
+      var triggerToFocus = lastTrigger;
+      activeModal = null;
+      lastTrigger = null;
+      if (triggerToFocus && typeof triggerToFocus.focus === "function") {
+        triggerToFocus.focus();
+      }
+    }
+
+    function openModal(modal, triggerEl) {
+      if (!modal) return;
+      if (activeModal && activeModal !== modal) {
+        closeModal();
+      }
+      activeModal = modal;
+      lastTrigger = triggerEl;
+      modal.hidden = false;
+      document.body.classList.add("modal-open");
+      var closeBtn = modal.querySelector("[data-modal-close]");
+      if (closeBtn) {
+        closeBtn.focus();
+      }
+    }
+
+    openButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var modalId = btn.getAttribute("data-modal-open");
+        var modal = modalId ? document.getElementById(modalId) : null;
+        openModal(modal, btn);
+      });
+    });
+
+    document.querySelectorAll("[data-modal-close]").forEach(function (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    });
+
+    document.querySelectorAll(".modal-backdrop").forEach(function (backdrop) {
+      backdrop.addEventListener("click", function (event) {
+        if (event.target === backdrop) {
+          closeModal();
+        }
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && activeModal) {
+        closeModal();
+      }
+    });
+  }
+
+  /**
    * 강사 대본 인쇄 버튼 (script.html 전용)
    */
   function initPrintButton() {
@@ -377,6 +441,7 @@
     initSectionNavHighlight();
     initCopyButtons();
     initPracticePrompt();
+    initModals();
     initSlideDeck();
     initPrintButton();
   });
