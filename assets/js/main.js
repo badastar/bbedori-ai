@@ -247,17 +247,23 @@
   }
 
   /**
-   * 상단 메뉴 클릭 및 스크롤 위치에 따른 활성 메뉴 표시
+   * 상단 메뉴 & 우측 플로팅 메뉴 클릭 및 스크롤 위치에 따른 활성 표시 + TOP 노출 제어
    */
   function initSectionNavHighlight() {
     var nav = document.getElementById("site-nav");
-    if (!nav) return;
+    var floatingNav = document.querySelector(".floating-nav");
+    if (!nav && !floatingNav) return;
 
-    var anchorLinks = Array.prototype.slice.call(nav.querySelectorAll('.nav-link[href^="#"]'));
-    if (anchorLinks.length === 0) return;
+    var headerAnchorLinks = nav
+      ? Array.prototype.slice.call(nav.querySelectorAll('.nav-link[href^="#"]'))
+      : [];
+    var floatingAnchorLinks = floatingNav
+      ? Array.prototype.slice.call(floatingNav.querySelectorAll('.floating-nav-link[href^="#"]:not(.floating-nav-top)'))
+      : [];
+    var allTrackedLinks = headerAnchorLinks.concat(floatingAnchorLinks);
 
     var linkByHref = {};
-    anchorLinks.forEach(function (link) {
+    headerAnchorLinks.forEach(function (link) {
       linkByHref[link.getAttribute("href")] = link;
     });
 
@@ -285,7 +291,7 @@
     });
 
     if (trackedSections.length === 0) {
-      anchorLinks.forEach(function (link) {
+      headerAnchorLinks.forEach(function (link) {
         var href = link.getAttribute("href");
         var el = document.getElementById(href.slice(1));
         if (el) trackedSections.push({ el: el, href: href });
@@ -295,11 +301,12 @@
     var activeHref = null;
     var clickLockUntil = 0;
     var ticking = false;
+    var heroEl = document.getElementById("hero");
 
     function setActive(href) {
       if (href === activeHref) return;
       activeHref = href;
-      anchorLinks.forEach(function (link) {
+      allTrackedLinks.forEach(function (link) {
         var isMatch = link.getAttribute("href") === href;
         link.classList.toggle("is-active", isMatch);
         if (isMatch) {
@@ -310,12 +317,20 @@
       });
     }
 
-    function updateFromScroll() {
+    function updateScrollState() {
       ticking = false;
-      if (Date.now() < clickLockUntil || trackedSections.length === 0) return;
 
       var header = document.querySelector(".site-header");
-      var offset = (header ? header.offsetHeight : 70) + 36;
+      var headerHeight = header ? header.offsetHeight : 70;
+
+      if (heroEl) {
+        var heroRect = heroEl.getBoundingClientRect();
+        document.body.classList.toggle("is-scrolled-past-hero", heroRect.bottom <= headerHeight + 12);
+      }
+
+      if (Date.now() < clickLockUntil || trackedSections.length === 0) return;
+
+      var offset = headerHeight + 36;
       var current = null;
 
       for (var i = 0; i < trackedSections.length; i++) {
@@ -332,33 +347,32 @@
       setActive(current);
     }
 
-    anchorLinks.forEach(function (link) {
+    allTrackedLinks.forEach(function (link) {
       link.addEventListener("click", function () {
         clickLockUntil = Date.now() + 750;
         setActive(link.getAttribute("href"));
       });
     });
 
-    var brandLink = document.querySelector('.brand[href="#hero"]');
-    if (brandLink) {
-      brandLink.addEventListener("click", function () {
+    var topTriggers = document.querySelectorAll('.brand[href="#hero"], .floating-nav-top');
+    topTriggers.forEach(function (el) {
+      el.addEventListener("click", function () {
         clickLockUntil = Date.now() + 750;
         setActive(null);
       });
-    }
+    });
 
     window.addEventListener("scroll", function () {
       if (!ticking) {
         ticking = true;
-        window.requestAnimationFrame(updateFromScroll);
+        window.requestAnimationFrame(updateScrollState);
       }
     }, { passive: true });
 
     if (window.location.hash && linkByHref[window.location.hash]) {
       setActive(window.location.hash);
-    } else {
-      updateFromScroll();
     }
+    updateScrollState();
   }
 
   /**

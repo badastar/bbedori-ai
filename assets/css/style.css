@@ -1787,7 +1787,91 @@ body.modal-open {
   gap: 8px;
 }
 
+/* ==========================================================================
+   우측 빠른 이동 플로팅 메뉴 (데스크톱: 6항목 / 모바일: 1섹션 스크롤 후 TOP만)
+   ========================================================================== */
+.floating-nav {
+  position: fixed;
+  right: 14px;
+  bottom: 22px;
+  z-index: 90;
+  display: none;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+}
+
+.floating-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+.floating-nav-link:hover,
+.floating-nav-link.is-active {
+  background: var(--bg-subtle);
+  color: var(--brand-teal);
+  font-weight: 800;
+}
+
+.floating-nav-top {
+  margin-top: 2px;
+  background: var(--brand-teal);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.floating-nav-top:hover {
+  background: var(--brand-teal-dark);
+  color: #ffffff;
+}
+
+@media (min-width: 1024px) {
+  .floating-nav {
+    display: flex;
+  }
+}
+
+@media (max-width: 1023px) {
+  .floating-nav-link:not(.floating-nav-top) {
+    display: none;
+  }
+
+  body.is-scrolled-past-hero .floating-nav {
+    display: flex;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body.is-scrolled-past-hero .floating-nav-top {
+    margin-top: 0;
+    min-width: 54px;
+    min-height: 44px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    box-shadow: var(--shadow-md);
+  }
+}
+
 @media print {
+  .floating-nav,
   .site-header,
   .no-print,
   .site-footer {
