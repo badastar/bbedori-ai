@@ -224,6 +224,9 @@
     }
 
     document.addEventListener("keydown", function (event) {
+      var ownerModal = deck.closest(".modal-backdrop");
+      if (ownerModal && ownerModal.hidden) return;
+
       var tag = event.target && event.target.tagName ? event.target.tagName.toLowerCase() : "";
       if (tag === "input" || tag === "textarea" || tag === "select") return;
 
@@ -431,14 +434,14 @@
 
     document.querySelectorAll(".modal-backdrop").forEach(function (backdrop) {
       backdrop.addEventListener("click", function (event) {
-        if (event.target === backdrop) {
+        if (event.target === backdrop && backdrop.getAttribute("data-modal-lock") !== "true") {
           closeModal();
         }
       });
     });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && activeModal) {
+      if (event.key === "Escape" && activeModal && activeModal.getAttribute("data-modal-lock") !== "true") {
         closeModal();
       }
     });

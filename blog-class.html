@@ -39,12 +39,15 @@
           <li><a class="nav-link" href="#cautions">주의사항</a></li>
           <li class="nav-divider" aria-hidden="true"></li>
           <li class="nav-tools">
-            <a
+            <button
+              type="button"
               class="nav-link nav-link--tool nav-link--icon"
-              href="slides.html"
+              data-modal-open="slides-modal"
+              aria-haspopup="dialog"
+              aria-controls="slides-modal"
               title="발표 슬라이드"
               aria-label="발표 슬라이드"
-            ><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i></a>
+            ><i class="fa-solid fa-person-chalkboard" aria-hidden="true"></i></button>
             <a
               class="nav-link nav-link--tool nav-link--icon"
               href="script.html"
@@ -1132,6 +1135,295 @@
           >공식 페이지 열기 ↗</a>
           <button type="button" class="btn btn--primary btn--sm" data-modal-close>닫기</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 발표 슬라이드 프레젠테이션 모달 (폭 100%, 좌우 2% 여백, X 버튼으로만 닫기) -->
+  <div
+    id="slides-modal"
+    class="modal-backdrop modal-backdrop--slides"
+    role="dialog"
+    aria-modal="true"
+    aria-label="강사 발표용 슬라이드"
+    data-modal-lock="true"
+    hidden
+  >
+    <div class="modal-dialog modal-dialog--slides" data-slide-deck>
+      <div class="slides-modal-header">
+        <div class="slides-pills" role="navigation" aria-label="슬라이드 선택">
+          <button type="button" class="slide-pill" data-slide-pill aria-current="true">1. 도입</button>
+          <button type="button" class="slide-pill" data-slide-pill>2. 자료 수집</button>
+          <button type="button" class="slide-pill" data-slide-pill>3. ChatGPT 분석</button>
+          <button type="button" class="slide-pill" data-slide-pill>4. NotebookLM DB</button>
+          <button type="button" class="slide-pill" data-slide-pill>5. 새 주제 발굴</button>
+          <button type="button" class="slide-pill" data-slide-pill>6. 실습 (2분)</button>
+          <button type="button" class="slide-pill" data-slide-pill>7. 콘텐츠 자산화</button>
+          <button type="button" class="slide-pill" data-slide-pill>8. 결말</button>
+        </div>
+        <button type="button" class="modal-close" data-modal-close aria-label="슬라이드 닫기">×</button>
+      </div>
+
+      <div class="slides-modal-body">
+        <!-- 슬라이드 1 -->
+        <article class="slide-panel" data-slide-panel>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge">슬라이드 1 / 8</span>
+              <span class="pill pill--teal">0~1분 · 도입</span>
+            </div>
+            <h2 class="slide-title">블로그 글감, 매번 고민하시나요?</h2>
+            <ul class="pain-list">
+              <li class="pain-item"><span class="pain-icon" aria-hidden="true">1</span><span>블로그를 운영하는데 무엇을 써야 할지 모르겠다.</span></li>
+              <li class="pain-item"><span class="pain-icon" aria-hidden="true">2</span><span>매번 비슷한 홍보 글만 작성한다.</span></li>
+              <li class="pain-item"><span class="pain-icon" aria-hidden="true">3</span><span>경쟁업체는 꾸준히 글을 올리는데 나는 소재가 없다.</span></li>
+              <li class="pain-item"><span class="pain-icon" aria-hidden="true">4</span><span>고객이 무엇을 궁금해하는지 잘 모르겠다.</span></li>
+            </ul>
+            <div class="slide-key-message">
+              핵심 메시지: 글을 못 쓰는 것이 아니라 글감이 부족한 것입니다.
+            </div>
+          </div>
+        </article>
+
+        <!-- 슬라이드 2 -->
+        <article class="slide-panel" data-slide-panel hidden>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge">슬라이드 2 / 8</span>
+              <span class="pill pill--teal">1~3분 · 1단계</span>
+            </div>
+            <h2 class="slide-title">1단계 — 잘되는 업체에서 글감을 찾아라</h2>
+            <p class="step-summary">내 업종에서 잘되는 업체를 찾아 고객의 실제 관심사를 수집합니다.</p>
+            <div class="grid-2">
+              <ul class="check-list">
+                <li>동일 업종의 인기 블로그 및 반응이 좋은 게시글</li>
+                <li>네이버 플레이스 등 공개된 고객후기</li>
+                <li>반복적으로 언급되는 고객 질문</li>
+                <li>고객이 만족한 이유와 불편을 느낀 지점</li>
+              </ul>
+              <div class="table-wrap" style="margin-top: 0;">
+                <table class="data-table">
+                  <thead>
+                    <tr><th scope="col">수집 대상</th><th scope="col">발견할 수 있는 소재</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>경쟁업체 블로그</strong></td><td>인기 메뉴, 서비스, 전문성</td></tr>
+                    <tr><td><strong>고객후기</strong></td><td>만족 이유, 방문 동기</td></tr>
+                    <tr><td><strong>부정적인 후기</strong></td><td>고객의 불편, 개선점</td></tr>
+                    <tr><td><strong>자주 묻는 질문</strong></td><td>고객의 실제 관심사</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 슬라이드 3 -->
+        <article class="slide-panel" data-slide-panel hidden>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge">슬라이드 3 / 8</span>
+              <span class="pill pill--teal">3~5분 · 2단계</span>
+            </div>
+            <h2 class="slide-title">2단계 — ChatGPT로 자료를 분석하라</h2>
+            <div class="grid-2">
+              <div>
+                <p style="font-weight: 700; margin-top: 0;">ChatGPT에게 요청하는 5단계</p>
+                <ol class="check-list">
+                  <li>경쟁업체 인기 게시글 분석</li>
+                  <li>고객후기에서 공통적인 만족 요소 추출</li>
+                  <li>고객들이 궁금해하는 질문 파악</li>
+                  <li>우리 업체만의 차별점 발굴</li>
+                  <li>새로운 블로그 주제 10개 제안</li>
+                </ol>
+              </div>
+              <div class="card card--teal">
+                <h3 style="margin-top: 0;">핵심 개념</h3>
+                <p style="margin-bottom: 0;">
+                  경쟁업체의 글을 따라 쓰는 것이 아니다. 기존 자료에서 <strong>고객의 관심사</strong>를 발견하고,
+                  <strong>우리 업체만의 실제 경험과 강점</strong>을 결합하는 것이다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 슬라이드 4 -->
+        <article class="slide-panel" data-slide-panel hidden>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge">슬라이드 4 / 8</span>
+              <span class="pill pill--teal">5~7분 · 3단계</span>
+            </div>
+            <h2 class="slide-title">3단계 — NotebookLM을 나만의 콘텐츠 DB로!</h2>
+            <p class="step-summary"><strong>NotebookLM은 내가 모은 자료를 기반으로 분석하고 질문할 수 있는 AI 연구 노트다.</strong></p>
+            <div class="grid-2">
+              <ul class="check-list">
+                <li>경쟁업체의 인기 블로그 글</li>
+                <li>고객후기 및 리뷰 자료</li>
+                <li>ChatGPT가 분석한 결과</li>
+                <li>우리 업체의 메뉴와 서비스 소개</li>
+                <li>실제 고객 질문과 상담 내용</li>
+                <li>우리 업체만의 차별화된 경험</li>
+              </ul>
+              <div class="slide-key-message" style="margin-top: 0; align-self: center;">
+                핵심 메시지: NotebookLM은 한 번 쓰고 끝나는 도구가 아니라, 자료를 계속 쌓아두고 새로운 글감을 발굴하는 나만의 콘텐츠 데이터베이스다.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 슬라이드 5 -->
+        <article class="slide-panel" data-slide-panel hidden>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge">슬라이드 5 / 8</span>
+              <span class="pill pill--teal">활용 확장</span>
+            </div>
+            <h2 class="slide-title">자료가 쌓이면 새로운 주제가 나온다</h2>
+            <div class="grid-2">
+              <div class="table-wrap" style="margin-top: 0;">
+                <table class="data-table">
+                  <thead>
+                    <tr><th scope="col">축적된 자료</th><th scope="col">새롭게 발견할 주제</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>경쟁업체 인기 글</strong></td><td>고객이 선호하는 메뉴</td></tr>
+                    <tr><td><strong>고객후기</strong></td><td>고객이 만족하는 이유</td></tr>
+                    <tr><td><strong>고객 질문</strong></td><td>궁금증 해결형 콘텐츠</td></tr>
+                    <tr><td><strong>우리 업체의 강점</strong></td><td>차별화된 소개 콘텐츠</td></tr>
+                    <tr><td><strong>계절별 자료</strong></td><td>계절에 맞는 홍보 콘텐츠</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card card--orange">
+                <h3 style="margin-top: 0;">얼큰이 칼국수 사례</h3>
+                <p><strong>기존 자료:</strong> 얼큰한 국물, 직접 끓인 육수, 해물, 청양고추</p>
+                <p style="margin-bottom: 8px;"><strong>새로운 주제:</strong></p>
+                <ul class="topic-list" style="margin-top: 0;">
+                  <li>추운 날 생각나는 얼큰이 칼국수</li>
+                  <li>국물 맛을 결정하는 육수의 차이</li>
+                  <li>해물과 청양고추가 어우러진 얼큰한 맛</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 슬라이드 6 -->
+        <article class="slide-panel" data-slide-panel hidden>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge" style="background: var(--brand-orange);">슬라이드 6 / 8 · 실습</span>
+              <span class="pill pill--orange">7~9분 · 총 2분</span>
+            </div>
+            <h2 class="slide-title">실습 — 내 업종의 블로그 글감 5개 찾아보기</h2>
+            <p class="step-summary">오늘 내가 운영하는 업체를 기준으로 1) 업종/업체명 입력 → 2) 고객 관심 주제 분석 → 3) 새 글감 5개 제안을 받아봅니다.</p>
+            <div class="prompt-box">
+              <pre id="modal-slide-practice-prompt" class="prompt-pre">당신은 소상공인 전문 블로그 콘텐츠 기획자입니다.
+
+나는 [업종 및 업체명]을 운영하고 있습니다.
+
+우리와 동일한 업종에서 잘되는 업체의 블로그 게시글과
+고객후기를 수집하여 분석하려고 합니다.
+
+다음 기준으로 분석해 주세요.
+
+1. 이 업종의 고객들이 관심을 가질 만한 주제 5가지
+2. 고객들이 중요하게 생각하는 만족 요소
+3. 고객들이 자주 궁금해하는 질문
+4. 우리 업체만의 차별점을 활용할 수 있는 콘텐츠 방향
+5. 실제 블로그에 작성할 수 있는 새로운 글감 5개
+
+확인되지 않은 사실은 만들어내지 말고,
+실제 업체의 경험과 정보를 추가로 확인해야 하는 부분은
+별도로 표시해 주세요.
+
+결과는 초보자도 이해할 수 있도록 표로 정리해 주세요.</pre>
+            </div>
+            <div class="prompt-actions">
+              <button
+                type="button"
+                class="btn btn--accent btn--sm"
+                data-copy-target="modal-slide-practice-prompt"
+                data-copy-status="modal-slide-copy-status"
+                data-copy-fallback="modal-slide-copy-fallback"
+              >실습 프롬프트 복사</button>
+              <a class="btn btn--primary btn--sm" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT 열기 ↗</a>
+              <a class="btn btn--outline btn--sm" href="#practice" data-modal-close>수강생 입력 실습 화면으로</a>
+              <span id="modal-slide-copy-status" class="copy-status" role="status" aria-live="polite"></span>
+            </div>
+            <div id="modal-slide-copy-fallback" class="manual-copy-fallback" hidden>
+              <strong>수동 복사:</strong> 아래 내용을 선택해 복사하세요.
+              <textarea class="manual-copy-textarea" readonly aria-label="슬라이드 실습 프롬프트 수동 복사"></textarea>
+            </div>
+          </div>
+        </article>
+
+        <!-- 슬라이드 7 -->
+        <article class="slide-panel" data-slide-panel hidden>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge">슬라이드 7 / 8</span>
+              <span class="pill pill--teal">자산화</span>
+            </div>
+            <h2 class="slide-title">나만의 블로그 콘텐츠 자산 만들기</h2>
+            <p class="step-summary">한 번 수집한 자료를 계속 활용하는 NotebookLM 자료 관리 예시 6가지</p>
+            <div class="archive-grid">
+              <div class="archive-folder"><span class="archive-num">1</span><div><h3>경쟁업체 인기 블로그</h3></div></div>
+              <div class="archive-folder"><span class="archive-num">2</span><div><h3>고객후기 및 리뷰</h3></div></div>
+              <div class="archive-folder"><span class="archive-num">3</span><div><h3>고객 질문과 관심사</h3></div></div>
+              <div class="archive-folder"><span class="archive-num">4</span><div><h3>우리 업체 소개 및 강점</h3></div></div>
+              <div class="archive-folder"><span class="archive-num">5</span><div><h3>블로그 글감 및 아이디어</h3></div></div>
+              <div class="archive-folder"><span class="archive-num">6</span><div><h3>계절별 콘텐츠 자료</h3></div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 슬라이드 8 -->
+        <article class="slide-panel" data-slide-panel hidden>
+          <div>
+            <div class="slide-meta">
+              <span class="step-badge">슬라이드 8 / 8</span>
+              <span class="pill pill--orange">9~10분 · 결말</span>
+            </div>
+            <h2 class="slide-title">결말 — 글을 쓰는 사람에서 콘텐츠를 축적하는 사람으로</h2>
+            <p class="step-summary" style="font-weight: 800; color: var(--brand-teal-dark);">검색하고, 분석하고, 축적하고, 재활용하라!</p>
+            <div class="table-wrap" style="margin-top: 0;">
+              <table class="data-table data-table--responsive">
+                <thead>
+                  <tr><th scope="col">도구 / 단계</th><th scope="col">핵심 역할</th><th scope="col">결과</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="도구 / 단계"><strong>ChatGPT</strong></td>
+                    <td data-label="핵심 역할">검색 · 분석 · 기획</td>
+                    <td data-label="결과">새로운 관점과 블로그 글감 발굴</td>
+                  </tr>
+                  <tr>
+                    <td data-label="도구 / 단계"><strong>NotebookLM</strong></td>
+                    <td data-label="핵심 역할">축적 · 연결 · 재발견</td>
+                    <td data-label="결과">자료를 모으고 새로운 주제로 재활용</td>
+                  </tr>
+                  <tr>
+                    <td data-label="도구 / 단계"><strong>나만의 콘텐츠</strong></td>
+                    <td data-label="핵심 역할">지속적인 생산</td>
+                    <td data-label="결과">업체만의 신뢰와 경쟁력 축적</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="slides-modal-footer">
+        <button type="button" class="btn btn--outline btn--sm" data-slide-prev>← 이전 슬라이드</button>
+        <div class="slides-modal-counter-wrap">
+          <strong data-slide-counter aria-live="polite">1 / 8</strong>
+          <span class="slides-modal-hint">(키보드 ← / → 전환 · 우측 상단 × 로 닫기)</span>
+        </div>
+        <button type="button" class="btn btn--primary btn--sm" data-slide-next>다음 슬라이드 →</button>
       </div>
     </div>
   </div>
