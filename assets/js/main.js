@@ -247,6 +247,121 @@
   }
 
   /**
+   * 상단 메뉴 클릭 및 스크롤 위치에 따른 활성 메뉴 표시
+   */
+  function initSectionNavHighlight() {
+    var nav = document.getElementById("site-nav");
+    if (!nav) return;
+
+    var anchorLinks = Array.prototype.slice.call(nav.querySelectorAll('.nav-link[href^="#"]'));
+    if (anchorLinks.length === 0) return;
+
+    var linkByHref = {};
+    anchorLinks.forEach(function (link) {
+      linkByHref[link.getAttribute("href")] = link;
+    });
+
+    var sectionGroupMap = {
+      "roadmap": "#roadmap",
+      "step-1": "#step-1",
+      "step-2": "#step-1",
+      "step-3": "#step-1",
+      "case-study": "#step-1",
+      "workflow": "#step-1",
+      "practice": "#practice",
+      "notebooklm-prompts": "#notebooklm-prompts",
+      "asset-library": "#notebooklm-prompts",
+      "cautions": "#cautions",
+      "next-learning": "#cautions",
+      "closing": "#cautions"
+    };
+
+    var trackedSections = [];
+    Object.keys(sectionGroupMap).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && linkByHref[sectionGroupMap[id]]) {
+        trackedSections.push({ el: el, href: sectionGroupMap[id] });
+      }
+    });
+
+    if (trackedSections.length === 0) {
+      anchorLinks.forEach(function (link) {
+        var href = link.getAttribute("href");
+        var el = document.getElementById(href.slice(1));
+        if (el) trackedSections.push({ el: el, href: href });
+      });
+    }
+
+    var activeHref = null;
+    var clickLockUntil = 0;
+    var ticking = false;
+
+    function setActive(href) {
+      if (href === activeHref) return;
+      activeHref = href;
+      anchorLinks.forEach(function (link) {
+        var isMatch = link.getAttribute("href") === href;
+        link.classList.toggle("is-active", isMatch);
+        if (isMatch) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function updateFromScroll() {
+      ticking = false;
+      if (Date.now() < clickLockUntil || trackedSections.length === 0) return;
+
+      var header = document.querySelector(".site-header");
+      var offset = (header ? header.offsetHeight : 70) + 36;
+      var current = null;
+
+      for (var i = 0; i < trackedSections.length; i++) {
+        var rect = trackedSections[i].el.getBoundingClientRect();
+        if (rect.top <= offset) {
+          current = trackedSections[i].href;
+        }
+      }
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
+        current = trackedSections[trackedSections.length - 1].href;
+      }
+
+      setActive(current);
+    }
+
+    anchorLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        clickLockUntil = Date.now() + 750;
+        setActive(link.getAttribute("href"));
+      });
+    });
+
+    var brandLink = document.querySelector('.brand[href="#hero"]');
+    if (brandLink) {
+      brandLink.addEventListener("click", function () {
+        clickLockUntil = Date.now() + 750;
+        setActive(null);
+      });
+    }
+
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateFromScroll);
+      }
+    }, { passive: true });
+
+    if (window.location.hash && linkByHref[window.location.hash]) {
+      setActive(window.location.hash);
+    } else {
+      updateFromScroll();
+    }
+  }
+
+  /**
    * 강사 대본 인쇄 버튼 (script.html 전용)
    */
   function initPrintButton() {
@@ -259,6 +374,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     initMobileNav();
+    initSectionNavHighlight();
     initCopyButtons();
     initPracticePrompt();
     initSlideDeck();
