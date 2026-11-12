@@ -1842,6 +1842,18 @@ body.modal-open {
 @media (min-width: 1024px) {
   .floating-nav {
     display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  body.is-floating-nav-visible .floating-nav {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 }
 
@@ -1850,7 +1862,7 @@ body.modal-open {
     display: none;
   }
 
-  body.is-scrolled-past-hero .floating-nav {
+  body.is-floating-nav-visible .floating-nav {
     display: flex;
     padding: 0;
     background: transparent;
@@ -1859,7 +1871,7 @@ body.modal-open {
     box-shadow: none;
   }
 
-  body.is-scrolled-past-hero .floating-nav-top {
+  body.is-floating-nav-visible .floating-nav-top {
     margin-top: 0;
     min-width: 54px;
     min-height: 44px;

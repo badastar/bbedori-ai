@@ -323,6 +323,9 @@
       var header = document.querySelector(".site-header");
       var headerHeight = header ? header.offsetHeight : 70;
 
+      var scrollThreshold = window.innerHeight * 0.5;
+      document.body.classList.toggle("is-floating-nav-visible", window.scrollY >= scrollThreshold);
+
       if (heroEl) {
         var heroRect = heroEl.getBoundingClientRect();
         document.body.classList.toggle("is-scrolled-past-hero", heroRect.bottom <= headerHeight + 12);
@@ -354,7 +357,7 @@
       });
     });
 
-    var topTriggers = document.querySelectorAll('.brand[href="#hero"], .floating-nav-top');
+    var topTriggers = document.querySelectorAll('.nav-link[href="#hero"], .floating-nav-top');
     topTriggers.forEach(function (el) {
       el.addEventListener("click", function () {
         clickLockUntil = Date.now() + 750;
