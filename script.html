@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>강사 대본 및 진행 가이드 | AI BLOG CLASS</title>
+  <meta name="description" content="10분 실전 AI 블로그 교육 강사용 구어체 대본, 슬라이드별 시간표, 실습 진행 팁 및 PPT 제작 프롬프트입니다.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">대본 본문으로 바로가기</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">AI</span>
+        <span>AI BLOG CLASS</span>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        data-nav-toggle
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >메뉴</button>
+
+      <nav id="site-nav" class="site-nav" aria-label="주 메뉴">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">← 수강생 학습 페이지</a></li>
+          <li><a class="nav-link" href="#ppt-prompt">PPT 제작 프롬프트</a></li>
+          <li class="nav-divider" aria-hidden="true"></li>
+          <li><a class="nav-link nav-link--tool" href="slides.html">발표 슬라이드</a></li>
+          <li><a class="nav-link nav-link--active" href="script.html" aria-current="page">강사 대본</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <div class="slides-toolbar no-print">
+        <div>
+          <span class="section-eyebrow">강사용 전체 가이드 · 10분 분량</span>
+          <h1 class="section-title" style="margin-bottom: 6px;">슬라이드별 강사 대본 및 진행 팁</h1>
+          <p style="margin: 0; color: var(--text-secondary);">
+            슬라이드에는 핵심 문구와 시각 자료를 중심으로 배치하고, 아래 구어체 대본을 참고해 설명합니다.
+          </p>
+        </div>
+        <div class="hero-actions" style="margin-bottom: 0;">
+          <button type="button" class="btn btn--primary btn--sm" data-print-btn>대본 인쇄하기</button>
+          <a class="btn btn--secondary btn--sm" href="slides.html">발표 슬라이드 열기</a>
+          <a class="btn btn--outline btn--sm" href="index.html">수강생 화면으로</a>
+        </div>
+      </div>
+
+      <!-- 10분 시간표 요약 -->
+      <section class="card" style="margin-bottom: 28px;" aria-label="10분 강의 시간표 요약">
+        <h2 style="margin-top: 0; font-size: 1.25rem;">10분 시간표 한눈에 보기</h2>
+        <div class="table-wrap" style="margin-top: 12px;">
+          <table class="data-table data-table--responsive">
+            <thead>
+              <tr>
+                <th scope="col">시간</th>
+                <th scope="col">주제</th>
+                <th scope="col">진행 방식</th>
+                <th scope="col" class="no-print">이동</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="시간"><strong>0~1분</strong></td>
+                <td data-label="주제">도입: 블로그 글감이 없는 이유</td>
+                <td data-label="진행 방식">공감과 문제 제기</td>
+                <td data-label="이동" class="no-print"><a href="#script-1">대본 1</a> · <a href="slides.html#slide-1">슬라이드 1</a></td>
+              </tr>
+              <tr>
+                <td data-label="시간"><strong>1~3분</strong></td>
+                <td data-label="주제">1단계: 잘되는 업체의 글과 후기 찾기</td>
+                <td data-label="진행 방식">사례 설명</td>
+                <td data-label="이동" class="no-print"><a href="#script-2">대본 2</a> · <a href="slides.html#slide-2">슬라이드 2</a></td>
+              </tr>
+              <tr>
+                <td data-label="시간"><strong>3~5분</strong></td>
+                <td data-label="주제">2단계: ChatGPT로 새로운 글감 발굴</td>
+                <td data-label="진행 방식">분석 과정 설명</td>
+                <td data-label="이동" class="no-print"><a href="#script-3">대본 3</a> · <a href="slides.html#slide-3">슬라이드 3</a></td>
+              </tr>
+              <tr>
+                <td data-label="시간"><strong>5~7분</strong></td>
+                <td data-label="주제">3단계: NotebookLM에 자료 축적</td>
+                <td data-label="진행 방식">활용법 설명 및 시연</td>
+                <td data-label="이동" class="no-print"><a href="#script-4">대본 4~5</a> · <a href="slides.html#slide-4">슬라이드 4</a></td>
+              </tr>
+              <tr>
+                <td data-label="시간"><strong>7~9분</strong></td>
+                <td data-label="주제">실습: 내 업종의 블로그 글감 찾기</td>
+                <td data-label="진행 방식">직접 실습 1회 (총 2분)</td>
+                <td data-label="이동" class="no-print"><a href="#script-6">대본 6</a> · <a href="slides.html#slide-6">슬라이드 6</a></td>
+              </tr>
+              <tr>
+                <td data-label="시간"><strong>9~10분</strong></td>
+                <td data-label="주제">결말: 콘텐츠 자산화</td>
+                <td data-label="진행 방식">정리와 실천 제안</td>
+                <td data-label="이동" class="no-print"><a href="#script-8">대본 7~8</a> · <a href="slides.html#slide-8">슬라이드 8</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 슬라이드 1 -->
+      <article id="script-1" class="script-card">
+        <div class="step-head">
+          <span class="step-badge">슬라이드 1</span>
+          <span class="pill pill--teal">0~1분 · 도입</span>
+        </div>
+        <h2 class="step-title">도입 — 블로그 글감, 매번 고민하시나요?</h2>
+        <p style="margin: 0; color: var(--text-secondary);"><strong>핵심 메시지:</strong> 글을 못 쓰는 것이 아니라 글감이 부족한 것입니다.</p>
+        <div class="script-quote">
+          <p>“여러분, 사업을 하면서 블로그도 운영하고 계시죠? 그런데 막상 글을 쓰려고 하면 오늘은 무엇을 써야 할지 고민하게 됩니다. 매번 우리 가게가 좋다는 이야기만 할 수도 없고, 새로운 소재를 찾기도 어렵습니다.</p>
+          <p>생각을 조금 바꿔보겠습니다. 내가 직접 글감을 만들려고 애쓰기보다, 이미 잘되고 있는 업체와 고객들이 남긴 이야기에서 글감을 찾아보면 어떨까요?”</p>
+        </div>
+        <div class="visual-cue">
+          <strong>시각 자료 제안:</strong> 빈 화면을 바라보며 글감을 고민하는 사업자 / 블로그 게시글을 작성하는 노트북 화면 / “무엇을 쓸까?” 고민 이미지
+        </div>
+      </article>
+
+      <!-- 슬라이드 2 -->
+      <article id="script-2" class="script-card">
+        <div class="step-head">
+          <span class="step-badge">슬라이드 2</span>
+          <span class="pill pill--teal">1~3분 · 1단계</span>
+        </div>
+        <h2 class="step-title">1단계 — 잘되는 업체에서 글감을 찾아라</h2>
+        <p style="margin: 0; color: var(--text-secondary);"><strong>PPT 핵심:</strong> 인기 블로그, 공개 고객후기, 반복 질문, 만족 이유와 불편 지점 수집</p>
+        <div class="script-quote">
+          <p>“예를 들어 음식점을 운영한다고 가정해 보겠습니다. 우리 동네에서 잘되는 칼국수집이 있다면 그 업체의 블로그를 살펴봅니다. 어떤 메뉴를 소개하는지, 고객들이 어떤 부분을 칭찬하는지 찾아보는 겁니다.</p>
+          <p>‘국물이 시원하다’, ‘직접 육수를 끓여 깊은 맛이 난다’, ‘해물이 신선하다’ 같은 표현이 있겠죠. 이런 내용이 바로 고객이 실제로 관심을 갖는 블로그 글감입니다.”</p>
+        </div>
+        <div class="visual-cue">
+          <strong>시각 자료 제안:</strong> 검색창에서 동종 업종을 검색하는 장면 / 블로그 게시글과 고객후기 예시 / 반복되는 핵심 단어 표시 화면
+        </div>
+      </article>
+
+      <!-- 슬라이드 3 -->
+      <article id="script-3" class="script-card">
+        <div class="step-head">
+          <span class="step-badge">슬라이드 3</span>
+          <span class="pill pill--teal">3~5분 · 2단계</span>
+        </div>
+        <h2 class="step-title">2단계 — ChatGPT로 자료를 분석하라</h2>
+        <p style="margin: 0; color: var(--text-secondary);"><strong>PPT 핵심:</strong> 경쟁업체 글을 따라 쓰는 것이 아니라 고객 관심사 발견 + 우리 업체 실제 경험 결합</p>
+        <div class="script-quote">
+          <p>“수집한 자료를 ChatGPT에 넣어보겠습니다. 그냥 블로그 글을 써달라고 하는 것이 아닙니다.</p>
+          <p>‘이 자료에서 고객들이 가장 중요하게 생각하는 것은 무엇인가?’, ‘고객들이 자주 언급하는 만족 요소는 무엇인가?’, ‘이 내용을 바탕으로 우리 업체가 쓸 수 있는 새로운 블로그 주제를 10개 만들어 달라’고 요청하는 겁니다.</p>
+          <p>AI는 여러 자료에 흩어져 있는 정보를 정리하고 새로운 관점의 주제를 제안할 수 있습니다. 단, 실제 우리 업체가 제공하지 않는 서비스나 사실을 만들어내서는 안 됩니다.”</p>
+        </div>
+        <div class="visual-cue">
+          <strong>시각 자료 제안:</strong> ChatGPT 대화 흐름 / 여러 후기에서 공통 키워드를 추출해 블로그 주제 목록으로 바꾸는 과정
+        </div>
+      </article>
+
+      <!-- 슬라이드 4 -->
+      <article id="script-4" class="script-card">
+        <div class="step-head">
+          <span class="step-badge">슬라이드 4</span>
+          <span class="pill pill--teal">5~7분 · 3단계</span>
+        </div>
+        <h2 class="step-title">3단계 — NotebookLM을 나만의 콘텐츠 DB로!</h2>
+        <p style="margin: 0; color: var(--text-secondary);"><strong>PPT 핵심:</strong> 한 번 쓰고 끝나는 도구가 아니라 자료를 계속 쌓아두고 재활용하는 개인 콘텐츠 데이터베이스</p>
+        <div class="script-quote">
+          <p>“여기서 중요한 도구가 하나 더 등장합니다. 바로 NotebookLM입니다.</p>
+          <p>ChatGPT가 자료를 분석하고 새로운 아이디어를 만드는 역할이라면, NotebookLM은 자료를 한곳에 모아두고 지속적으로 활용하는 역할을 합니다.</p>
+          <p>경쟁업체의 블로그 글 10개, 고객후기 50개, 우리 업체의 소개 자료를 NotebookLM에 넣어둡니다. 한 달 후 다시 글을 써야 한다면 처음부터 검색할 필요 없이, 축적해 둔 자료를 바탕으로 질문하면 됩니다.”</p>
+        </div>
+        <div class="visual-cue">
+          <strong>시각 자료 제안:</strong> 블로그·후기·업체 소개 자료가 하나의 노트북/지식 저장소로 모이는 그림
+        </div>
+      </article>
+
+      <!-- 슬라이드 5 -->
+      <article id="script-5" class="script-card">
+        <div class="step-head">
+          <span class="step-badge">슬라이드 5</span>
+          <span class="pill pill--teal">활용 확장</span>
+        </div>
+        <h2 class="step-title">자료가 쌓이면 새로운 주제가 나온다</h2>
+        <p style="margin: 0; color: var(--text-secondary);"><strong>사례:</strong> 얼큰한 국물·직접 끓인 육수·해물·청양고추 → 추운 날 얼큰이 칼국수 등 새 주제 3가지</p>
+        <div class="script-quote">
+          <p>“NotebookLM에 지금까지 모은 자료를 바탕으로 아직 작성하지 않은 새로운 블로그 주제 10개를 제안해 달라고 질문합니다.</p>
+          <p>기존 자료에서 공통된 관심사를 찾아 새로운 콘텐츠 방향을 제안받는 것입니다. 자료를 단순히 모으는 데 그치지 않고 계속 새로운 관점으로 재활용하는 것이 중요합니다.”</p>
+        </div>
+        <div class="visual-cue">
+          <strong>시각 자료 제안:</strong> 여러 자료 조각이 새 아이디어로 연결되는 마인드맵 / 기존 자료와 새 블로그 주제 연결 화살표 다이어그램
+        </div>
+      </article>
+
+      <!-- 슬라이드 6 -->
+      <article id="script-6" class="script-card" style="border-left-color: var(--brand-orange);">
+        <div class="step-head">
+          <span class="step-badge" style="background: var(--brand-orange);">슬라이드 6 · 실습</span>
+          <span class="pill pill--orange">7~9분 · 총 2분</span>
+        </div>
+        <h2 class="step-title">실습 — 내 업종의 블로그 글감 5개 찾아보기</h2>
+        <div class="script-quote">
+          <p>“지금부터 직접 해보겠습니다. 여러분이 운영하는 업종이나 가게 이름을 입력해 보세요. AI에게 우리 업종에서 고객들이 관심을 가질 만한 주제를 찾아달라고 요청하겠습니다.</p>
+          <p>오늘은 완성된 블로그 글을 만드는 것이 목적이 아닙니다. 앞으로 내가 쓸 수 있는 글감 5개를 발견하는 것이 목적입니다. 이 자료를 저장해 두었다가 NotebookLM에 축적하면 됩니다.”</p>
+        </div>
+        <div class="notice-box" style="margin-top: 12px;">
+          <strong>실습 진행 팁 4가지</strong>
+          <ul class="check-list" style="margin-top: 6px; margin-bottom: 0;">
+            <li>수강생이 실제 업체명이나 업종을 입력하도록 안내한다.</li>
+            <li>시간이 부족하면 업체명 대신 업종만 입력해도 된다.</li>
+            <li>실습 결과 중 마음에 드는 주제 1개를 선택하게 한다.</li>
+            <li>선택한 주제를 나중에 NotebookLM에 저장할 자료로 활용한다.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 슬라이드 7 -->
+      <article id="script-7" class="script-card">
+        <div class="step-head">
+          <span class="step-badge">슬라이드 7</span>
+          <span class="pill pill--teal">자산화</span>
+        </div>
+        <h2 class="step-title">나만의 블로그 콘텐츠 자산 만들기</h2>
+        <p style="margin: 0; color: var(--text-secondary);"><strong>PPT 핵심:</strong> 6가지 카테고리(경쟁업체 인기 블로그 / 고객후기 / 고객 질문 / 우리 업체 강점 / 글감 / 계절 자료)</p>
+        <div class="script-quote">
+          <p>“블로그를 쓸 때마다 자료를 새롭게 찾지 않아도 됩니다. 자료를 꾸준히 축적하면 나만의 콘텐츠 라이브러리가 만들어집니다.</p>
+          <p>한 달 전 수집한 고객후기와 오늘 수집한 고객후기를 함께 분석할 수도 있고, 계절이 바뀔 때 기존 자료에서 새로운 주제를 찾아낼 수도 있습니다.</p>
+          <p>이것이 AI를 단순히 글쓰기 도구로 사용하는 것과 AI를 업무에 활용하는 것의 차이입니다.”</p>
+        </div>
+        <div class="visual-cue">
+          <strong>시각 자료 제안:</strong> 카테고리별 디지털 자료함 / 날짜별 자료 누적 도식 / NotebookLM 자료 목록 예시
+        </div>
+      </article>
+
+      <!-- 슬라이드 8 -->
+      <article id="script-8" class="script-card">
+        <div class="step-head">
+          <span class="step-badge">슬라이드 8</span>
+          <span class="pill pill--orange">9~10분 · 결말</span>
+        </div>
+        <h2 class="step-title">결말 — 글을 쓰는 사람에서 콘텐츠를 축적하는 사람으로</h2>
+        <p style="margin: 0; color: var(--text-secondary);"><strong>PPT 핵심:</strong> 검색하고, 분석하고, 축적하고, 재활용하라!</p>
+        <div class="script-quote">
+          <p>“오늘 강의의 핵심은 AI에게 글을 대신 써달라고 하는 것이 아닙니다.</p>
+          <p>내 사업과 관련된 좋은 자료를 찾아서 모으고, AI를 통해 분석하고, 그것을 나만의 콘텐츠 자산으로 만드는 것입니다.</p>
+          <p>오늘부터 경쟁업체의 글 하나, 고객후기 하나라도 그냥 지나치지 마세요. 그것이 여러분의 다음 블로그 글감이 될 수 있습니다.</p>
+          <p>AI 시대에는 글을 잘 쓰는 능력만큼 좋은 자료를 모으고 활용하는 능력이 중요합니다.”</p>
+        </div>
+        <div class="visual-cue">
+          <strong>시각 자료 제안:</strong> ChatGPT → NotebookLM → 나만의 블로그 콘텐츠 3단계 흐름도 / 순환형 다이어그램
+        </div>
+      </article>
+
+      <!-- PPT 제작용 최종 프롬프트 -->
+      <section id="ppt-prompt" class="card no-print" style="margin-top: 32px;">
+        <span class="section-eyebrow">강의 준비용 부록</span>
+        <h2 style="margin-top: 0;">PPT 제작 AI 도구용 최종 프롬프트</h2>
+        <p style="color: var(--text-secondary);">
+          별도 PPT 생성 AI 도구로 발표 자료 파일을 새로 제작할 때 그대로 복사해 사용할 수 있는 프롬프트입니다.
+        </p>
+        <div class="prompt-box">
+          <pre id="ppt-gen-prompt" class="prompt-pre"># 10분 실전 AI 교육 PPT 제작 프롬프트
+
+당신은 소상공인과 중장년층을 대상으로 생성형 AI 활용 교육을
+전문적으로 설계하는 교육 콘텐츠 디자이너입니다.
+
+## 교육 제목
+
+경쟁업체의 콘텐츠를 나만의 블로그 자산으로!
+ChatGPT와 NotebookLM을 활용한 블로그 글감 발굴 및 콘텐츠 축적 방법
+
+## 교육 목표
+
+1. 동일 업종에서 잘되는 업체의 블로그와 고객후기를 찾는 방법을 이해한다.
+2. ChatGPT로 수집한 자료를 분석하고 새로운 블로그 글감을 발굴한다.
+3. NotebookLM을 개인 콘텐츠 데이터베이스로 활용하는 방법을 이해한다.
+4. 자료를 지속적으로 축적하고 재활용하는 콘텐츠 생산 구조를 익힌다.
+
+## PPT 구성
+
+총 8장, 발표 시간 10분으로 구성한다.
+
+1. 도입 (0~1분): 블로그 글감이 부족한 현실과 문제 제기
+2. 자료 수집 (1~3분): 동일 업종의 인기 블로그, 잘되는 업체, 고객후기 찾기
+3. ChatGPT 활용 (3~5분): 수집 자료 분석 및 새로운 주제 발굴
+4. NotebookLM 활용 (5~7분): 자료 축적, 분류, 검색, 재분석
+5. 새로운 글감 발굴: 기존 자료를 조합하여 새로운 콘텐츠 주제 생성
+6. 실습 (7~9분): 자신의 업종을 입력하고 블로그 글감 5개 발굴
+7. 콘텐츠 자산화: NotebookLM에 지속적으로 자료 축적
+8. 마무리 (9~10분): 검색, 분석, 축적, 재활용의 반복 구조
+
+## 디자인 방향
+
+- 16:9 와이드 화면
+- 깔끔하고 현대적인 AI 실무교육 디자인
+- 따뜻한 화이트 배경
+- 청록색과 오렌지색 포인트 컬러
+- 소상공인과 중장년층이 쉽게 읽을 수 있는 큰 글씨
+- 텍스트를 지나치게 많이 넣지 말 것
+- 실제 업무 장면, AI 활용 화면, 자료 수집 및 분석 과정의 시각화를 강조
+- ChatGPT와 NotebookLM의 역할 차이를 명확하게 표현
+- 단계별 흐름은 화살표와 프로세스 다이어그램으로 표현
+
+## 강의자용 자료
+
+각 슬라이드마다 다음 내용을 별도로 작성한다.
+
+1. 슬라이드 제목
+2. 화면에 표시할 핵심 문구
+3. 시각 자료 및 이미지 구성
+4. 강사가 실제로 설명할 구어체 강의 대본
+5. 해당 슬라이드 권장 발표 시간
+
+## 실습 구성
+
+중간에 단 한 번, 2분짜리 실습을 배치한다.
+
+실습은 수강생이 자신의 업종이나 가게 이름을 ChatGPT에 입력하고,
+고객 관심사와 블로그 글감 5개를 제안받는 방식으로 한다.
+
+## 반드시 전달할 핵심 개념
+
+ChatGPT = 자료 분석 및 새로운 콘텐츠 기획
+
+NotebookLM = 자료 축적 및 기존 자료를 활용한 새로운 주제 발굴
+
+최종 목표 = 일회성 블로그 글쓰기가 아니라
+지속적으로 축적되고 재활용되는 나만의 콘텐츠 데이터베이스 구축
+
+경쟁업체의 콘텐츠를 복사하지 않고 고객의 관심사와 문제를 분석하여
+독창적인 콘텐츠를 만드는 것을 강조한다.
+
+최종 결과물은 10분 안에 실제 강의할 수 있는
+완성도 높은 교육용 PPT와 강사 발표 대본으로 제작한다.</pre>
+        </div>
+        <div class="prompt-actions">
+          <button
+            type="button"
+            class="btn btn--primary btn--sm"
+            data-copy-target="ppt-gen-prompt"
+            data-copy-status="ppt-copy-status"
+            data-copy-fallback="ppt-copy-fallback"
+          >PPT 제작 프롬프트 복사</button>
+          <span id="ppt-copy-status" class="copy-status" role="status" aria-live="polite"></span>
+        </div>
+        <div id="ppt-copy-fallback" class="manual-copy-fallback" hidden>
+          <strong>수동 복사:</strong> 아래 내용을 선택해 복사하세요.
+          <textarea class="manual-copy-textarea" readonly aria-label="PPT 제작 프롬프트 수동 복사"></textarea>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>AI BLOG CLASS</strong> · 강사 대본 및 진행 가이드</div>
+      <div class="footer-links">
+        <a href="index.html">수강생 학습 페이지</a>
+        <a href="slides.html">발표 슬라이드(8장)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
