@@ -32,7 +32,7 @@
   --error-text: #991b1b;
 
   /* 타이포그래피 & 간격 */
-  --font-sans: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Gowun Dodum", "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: ui-monospace, "Cascadia Mono", "Consolas", monospace;
 
   --text-base: 1.0625rem; /* 17px */
