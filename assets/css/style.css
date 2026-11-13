@@ -1705,10 +1705,14 @@ section[id],
 
 .slide-card-img {
   width: 100%;
-  height: 220px;
+  height: 180px;
   object-fit: cover;
-  object-position: center top;
   display: block;
+}
+
+.slide-card-img--top {
+  height: 220px;
+  object-position: center top;
 }
 
 .slide-media-tag {
