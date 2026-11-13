@@ -1139,6 +1139,99 @@
     </div>
   </div>
 
+  <!-- NotebookLM 실전 자료 관리 & 활용 가이드 모달 -->
+  <div
+    id="nlm-guide-modal"
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="nlm-guide-title"
+    hidden
+  >
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="nlm-guide-title" class="modal-title">NotebookLM 실전 자료 관리 &amp; 활용 가이드</h3>
+        <button type="button" class="modal-close" data-modal-close aria-label="모달 닫기">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="guide-steps">
+          <!-- 1단계 -->
+          <section class="guide-step-card" aria-label="1단계 파일명 통일">
+            <div class="guide-step-head">
+              <h4 class="guide-step-title">1단계. 번호표 붙여 파일명 통일하기</h4>
+              <span class="pill pill--teal">1개의 마스터 노트북에 통합</span>
+            </div>
+            <p class="guide-step-desc">
+              자료를 업로드할 때 제목 앞에 <strong>[번호_카테고리]</strong>를 붙여 저장하면 6가지 보관함이 섞이지 않고 자동 정렬됩니다.
+            </p>
+            <div class="guide-file-grid" aria-label="파일명 예시 6가지">
+              <div class="guide-file-item"><span class="guide-file-tag">[01_경쟁업체]</span><span>은행동 인기 블로그 분석</span></div>
+              <div class="guide-file-item"><span class="guide-file-tag">[02_고객후기]</span><span>상권 실제 방문자 리뷰 모음</span></div>
+              <div class="guide-file-item"><span class="guide-file-tag">[03_고객질문]</span><span>자주 묻는 질문·불편사항 정리</span></div>
+              <div class="guide-file-item"><span class="guide-file-tag">[04_우리매장]</span><span>매장 소개·메뉴·강점·주차안내</span></div>
+              <div class="guide-file-item"><span class="guide-file-tag">[05_글감아이디어]</span><span>주 2회 블로그 기획안</span></div>
+              <div class="guide-file-item"><span class="guide-file-tag">[06_계절콘텐츠]</span><span>비 오는 날·시즌별 메뉴 소구점</span></div>
+            </div>
+          </section>
+
+          <!-- 2단계 -->
+          <section class="guide-step-card" aria-label="2단계 목적별 체크박스 제어">
+            <div class="guide-step-head">
+              <h4 class="guide-step-title">2단계. 목적에 따라 좌측 체크박스 켜고 끄기</h4>
+            </div>
+            <p class="guide-step-desc">
+              질문할 때마다 좌측 소스 목록에서 필요한 자료만 선택해 AI의 답변 범위를 통제합니다.
+            </p>
+            <div class="guide-combo-grid">
+              <div class="guide-combo-card">
+                <div class="guide-combo-label">새 글감 찾을 때</div>
+                <div class="guide-combo-value">[01] + [02] + [04] 체크</div>
+                <div class="guide-combo-note">경쟁사 약점 vs 우리 강점 비교</div>
+              </div>
+              <div class="guide-combo-card">
+                <div class="guide-combo-label">블로그 글 쓸 때</div>
+                <div class="guide-combo-value">[03] + [04] + [06] 체크</div>
+                <div class="guide-combo-note">타 매장 이름 혼입 방지</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3단계 -->
+          <section class="guide-step-card" aria-label="3단계 메모에 저장">
+            <div class="guide-step-head">
+              <h4 class="guide-step-title">3단계. NotebookLM 채팅창의 내용을 메모에 저장하기</h4>
+            </div>
+            <p class="guide-step-desc">
+              채팅에서 뽑아낸 좋은 글감이나 초안은 결과 밑에 <strong>[메모에 저장]</strong>을 클릭해서 파일명을 <strong>[05_글감아이디어]</strong> 형태로 계속 누적시킵니다.
+            </p>
+          </section>
+
+          <!-- 추가 팁 -->
+          <section class="guide-tip-box" aria-label="구글 드라이브 연동 팁">
+            <h4 class="guide-tip-title">📌 한 가지 추가 팁! 구글 드라이브 문서로 연동해 파일 1개로 누적 관리하기</h4>
+            <p>
+              구글 드라이브에서 제공하는 구글 문서(Google Docs)에 각각의 자료 파일을 만들어 NotebookLM에 자료로 추가해 두면 훨씬 편리합니다. 새로운 후기나 글감이 생길 때마다 해당 구글 문서 안에 내용만 계속 이어서 추가하면 NotebookLM에의 소스 개수를 늘리지 않고도 더 많은 양의 데이터를 누적하여 관리할 수 있습니다.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <p class="modal-disclaimer">1개의 마스터 노트북에 번호표 규칙으로 누적 관리하면 검색·글쓰기 효율이 높아집니다.</p>
+        <div class="modal-footer-actions">
+          <a
+            class="btn btn--secondary btn--sm"
+            href="https://notebooklm.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >NotebookLM 열기 ↗</a>
+          <button type="button" class="btn btn--primary btn--sm" data-modal-close>닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 발표 슬라이드 프레젠테이션 모달 (폭 100%, 좌우 2% 여백, X 버튼으로만 닫기) -->
   <div
     id="slides-modal"
@@ -1455,7 +1548,16 @@
               </div>
 
               <div class="slide-content-card">
-                <h3 class="slide-card-title" style="margin-top: 0;"><i class="fa-solid fa-folder-tree" aria-hidden="true"></i> NotebookLM 핵심 자료 보관함 (6개)</h3>
+                <div class="slide-card-header">
+                  <h3 class="slide-card-title"><i class="fa-solid fa-folder-tree" aria-hidden="true"></i> NotebookLM 핵심 자료 보관함 (6개)</h3>
+                  <button
+                    type="button"
+                    class="pill-btn"
+                    data-modal-open="nlm-guide-modal"
+                    aria-haspopup="dialog"
+                    aria-controls="nlm-guide-modal"
+                  ><i class="fa-solid fa-book-open" aria-hidden="true"></i> NotebookLM 자료관리 &amp; 활용가이드</button>
+                </div>
                 <div class="archive-grid" style="margin-top: 10px;">
                   <div class="archive-folder"><span class="archive-num">1</span><div><h3>경쟁업체 인기 블로그</h3></div></div>
                   <div class="archive-folder"><span class="archive-num">2</span><div><h3>고객후기 및 리뷰</h3></div></div>

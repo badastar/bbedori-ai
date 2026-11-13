@@ -1743,6 +1743,19 @@ section[id],
   flex-direction: column;
 }
 
+.slide-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.slide-card-header .slide-card-title {
+  margin: 0;
+}
+
 .slide-card-title {
   margin: 0 0 12px;
   font-size: 1.12rem;
@@ -1751,6 +1764,143 @@ section[id],
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+/* NotebookLM 실전 자료 관리 & 활용 가이드 모달 */
+.guide-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guide-step-card {
+  background: var(--bg-page);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--brand-teal);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.guide-step-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.guide-step-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.guide-step-desc {
+  margin: 0 0 12px;
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.guide-step-card > .guide-step-desc:last-child {
+  margin-bottom: 0;
+}
+
+.guide-file-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .guide-file-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.guide-file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+.guide-file-tag {
+  flex-shrink: 0;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--bg-teal-soft);
+  color: var(--brand-teal-dark);
+  font-weight: 800;
+  font-size: 0.82rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.guide-combo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .guide-combo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.guide-combo-card {
+  padding: 12px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+}
+
+.guide-combo-label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--brand-teal-dark);
+  margin-bottom: 4px;
+}
+
+.guide-combo-value {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.guide-combo-note {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.guide-tip-box {
+  background: var(--bg-orange-soft);
+  border: 1px solid #fed7aa;
+  border-left: 4px solid var(--brand-orange);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.guide-tip-title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--brand-orange-dark);
+}
+
+.guide-tip-box p {
+  margin: 0;
+  font-size: 0.93rem;
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
 .slide-subnote {
