@@ -253,6 +253,11 @@
       var ownerModal = deck.closest(".modal-backdrop");
       if (ownerModal && ownerModal.hidden) return;
 
+      var openModals = document.querySelectorAll(".modal-backdrop:not([hidden])");
+      for (var i = 0; i < openModals.length; i++) {
+        if (openModals[i] !== ownerModal) return;
+      }
+
       var tag = event.target && event.target.tagName ? event.target.tagName.toLowerCase() : "";
       if (tag === "input" || tag === "textarea" || tag === "select") return;
 
@@ -416,30 +421,58 @@
     var openButtons = document.querySelectorAll("[data-modal-open]");
     if (openButtons.length === 0) return;
 
-    var activeModal = null;
-    var lastTrigger = null;
+    var modalStack = [];
 
-    function closeModal() {
-      if (!activeModal) return;
-      activeModal.hidden = true;
-      document.body.classList.remove("modal-open");
-      var triggerToFocus = lastTrigger;
-      activeModal = null;
-      lastTrigger = null;
-      if (triggerToFocus && typeof triggerToFocus.focus === "function") {
-        triggerToFocus.focus();
+    function getTopEntry() {
+      return modalStack.length > 0 ? modalStack[modalStack.length - 1] : null;
+    }
+
+    function closeModal(targetModal) {
+      var top = getTopEntry();
+      if (!top) return;
+
+      var entryIndex = modalStack.length - 1;
+      if (targetModal) {
+        var found = false;
+        for (var i = modalStack.length - 1; i >= 0; i--) {
+          if (modalStack[i].modal === targetModal) {
+            entryIndex = i;
+            found = true;
+            break;
+          }
+        }
+        if (!found) return;
+      }
+
+      var entry = modalStack.splice(entryIndex, 1)[0];
+      if (!entry) return;
+
+      entry.modal.hidden = true;
+      entry.modal.style.zIndex = "";
+
+      if (modalStack.length === 0) {
+        document.body.classList.remove("modal-open");
+      }
+
+      if (entry.trigger && typeof entry.trigger.focus === "function") {
+        entry.trigger.focus();
       }
     }
 
     function openModal(modal, triggerEl) {
       if (!modal) return;
-      if (activeModal && activeModal !== modal) {
-        closeModal();
+      for (var i = 0; i < modalStack.length; i++) {
+        if (modalStack[i].modal === modal) {
+          modalStack.splice(i, 1);
+          break;
+        }
       }
-      activeModal = modal;
-      lastTrigger = triggerEl;
+
+      modalStack.push({ modal: modal, trigger: triggerEl || null });
+      modal.style.zIndex = String(500 + modalStack.length * 10);
       modal.hidden = false;
       document.body.classList.add("modal-open");
+
       var closeBtn = modal.querySelector("[data-modal-close]");
       if (closeBtn) {
         closeBtn.focus();
@@ -455,20 +488,24 @@
     });
 
     document.querySelectorAll("[data-modal-close]").forEach(function (closeBtn) {
-      closeBtn.addEventListener("click", closeModal);
+      closeBtn.addEventListener("click", function () {
+        var ownerModal = closeBtn.closest(".modal-backdrop");
+        closeModal(ownerModal);
+      });
     });
 
     document.querySelectorAll(".modal-backdrop").forEach(function (backdrop) {
       backdrop.addEventListener("click", function (event) {
         if (event.target === backdrop && backdrop.getAttribute("data-modal-lock") !== "true") {
-          closeModal();
+          closeModal(backdrop);
         }
       });
     });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && activeModal && activeModal.getAttribute("data-modal-lock") !== "true") {
-        closeModal();
+      var top = getTopEntry();
+      if (event.key === "Escape" && top && top.modal.getAttribute("data-modal-lock") !== "true") {
+        closeModal(top.modal);
       }
     });
   }
