@@ -1975,6 +1975,53 @@ section[id],
   color: var(--brand-orange-dark);
 }
 
+/* 슬라이드 8 하단 프롬프트 다운로드 배너 */
+.slide-download-banner {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: var(--bg-teal-soft);
+  border: 1.5px solid var(--brand-teal);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.slide-download-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 240px;
+}
+
+.slide-download-text strong {
+  color: var(--brand-teal-dark);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.slide-download-text p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .slide-download-banner {
+    padding: 14px 16px;
+  }
+  .slide-download-banner .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .slide-controls {
   display: flex;
   flex-wrap: wrap;
