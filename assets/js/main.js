@@ -419,7 +419,8 @@
    */
   function initModals() {
     var openButtons = document.querySelectorAll("[data-modal-open]");
-    if (openButtons.length === 0) return;
+    var zoomImages = document.querySelectorAll(".slide-hero-img, .slide-card-img");
+    if (openButtons.length === 0 && zoomImages.length === 0) return;
 
     var modalStack = [];
 
@@ -486,6 +487,53 @@
         openModal(modal, btn);
       });
     });
+
+    if (zoomImages.length > 0) {
+      var lightbox = document.createElement("div");
+      lightbox.id = "image-lightbox-modal";
+      lightbox.className = "modal-backdrop modal-backdrop--lightbox";
+      lightbox.setAttribute("role", "dialog");
+      lightbox.setAttribute("aria-modal", "true");
+      lightbox.setAttribute("aria-label", "슬라이드 이미지 확대 보기");
+      lightbox.hidden = true;
+      lightbox.innerHTML =
+        '<div class="lightbox-dialog">' +
+        '<button type="button" class="lightbox-close" data-modal-close aria-label="이미지 확대 닫기">×</button>' +
+        '<img class="lightbox-img" src="" alt="">' +
+        '<p class="lightbox-caption"></p>' +
+        "</div>";
+      document.body.appendChild(lightbox);
+
+      var lightboxImg = lightbox.querySelector(".lightbox-img");
+      var lightboxCaption = lightbox.querySelector(".lightbox-caption");
+
+      function openImageLightbox(imgEl) {
+        var src = imgEl.getAttribute("src") || "";
+        var alt = imgEl.getAttribute("alt") || "";
+        lightboxImg.setAttribute("src", src);
+        lightboxImg.setAttribute("alt", alt);
+        lightboxCaption.textContent = alt;
+        lightboxCaption.hidden = !alt;
+        openModal(lightbox, imgEl);
+      }
+
+      zoomImages.forEach(function (img) {
+        img.setAttribute("tabindex", "0");
+        img.setAttribute("role", "button");
+        if (!img.getAttribute("title")) {
+          img.setAttribute("title", "클릭하여 이미지 크게 보기");
+        }
+        img.addEventListener("click", function () {
+          openImageLightbox(img);
+        });
+        img.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openImageLightbox(img);
+          }
+        });
+      });
+    }
 
     document.querySelectorAll("[data-modal-close]").forEach(function (closeBtn) {
       closeBtn.addEventListener("click", function () {

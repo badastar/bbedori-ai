@@ -1623,6 +1623,13 @@ section[id],
   max-height: 320px;
   object-fit: cover;
   display: block;
+  cursor: zoom-in;
+  transition: transform 0.22s ease;
+}
+
+.slide-hero-image-wrap:hover .slide-hero-img,
+.slide-card-media:hover .slide-card-img {
+  transform: scale(1.02);
 }
 
 .slide-hero-content .pain-list {
@@ -1708,11 +1715,18 @@ section[id],
   height: 180px;
   object-fit: cover;
   display: block;
+  cursor: zoom-in;
+  transition: transform 0.22s ease;
 }
 
 .slide-card-img--top {
   height: 220px;
   object-position: center top;
+}
+
+.slide-image-badge,
+.slide-media-tag {
+  pointer-events: none;
 }
 
 .slide-media-tag {
@@ -2019,6 +2033,79 @@ section[id],
   .slide-download-banner .btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* 슬라이드 이미지 확대 라이트박스 모달 */
+.modal-backdrop--lightbox {
+  background: rgba(15, 23, 42, 0.88);
+  padding: 20px;
+}
+
+.lightbox-dialog {
+  position: relative;
+  max-width: min(1160px, 94vw);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: rgba(15, 23, 42, 0.92);
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox-close:hover {
+  background: var(--brand-teal);
+  border-color: #ffffff;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  background: #0f172a;
+  display: block;
+}
+
+.lightbox-caption {
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #f8fafc;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 90vw;
+}
+
+@media (max-width: 767px) {
+  .lightbox-close {
+    top: 8px;
+    right: 8px;
   }
 }
 
